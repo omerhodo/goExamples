@@ -17,6 +17,12 @@ func main() {
 
 	defer db.Close() //defer özelliği ile bu scope'un en son işlemi olduğunu söylendi.
 
+
+
+
+
+	
+/*
 	createStatement := "'users'('ID' INTEGER PRIMARY KEY AUTOINCREMENT,'Username' varchar(45) NOT NULL,'Email' varchar(45) NOT NULL,'Password' varchar(45) NOT NULL,'FirstName' varchar(45) NOT NULL,'LastName' varchar(45) NOT NULL,'BirthDate' varchar(45) DEFAULT NULL,'IsActive' tinyint(1) DEFAULT NULL);"
 
 	_, err = db.Exec("CREATE TABLE IF NOT EXISTS" + createStatement)
@@ -25,7 +31,7 @@ func main() {
 	}
 
 	//veri ekleme işlemi
-	res, err := db.Exec("INSERT INTO users(UserName, Email, Password, FirstName, LastName, BirthDate, IsActive) VALUES('2.KAYIT ohodo','omerhodo@gmail.com','123456','ömer','hodo','10.11.1993',1)")
+	res, err := db.Exec("INSERT INTO users(UserName, Email, Password, FirstName, LastName, BirthDate, IsActive) VALUES('hdil','hd@gmail.com','123456','harun','dilek','10.01.1993',1)")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -66,4 +72,39 @@ log.Printf("Inserted ID: %d",lastID)
 		}
 		log.Printf("bulunan satır içeriği: %q ", strconv.Itoa(ID)+" "+UserName+" "+Email+" "+Password+" "+FirsName+" "+LastName+" "+BirthDate+" "+strconv.FormatBool(IsActive))
 	}
+	
+*/
+
+
+var (
+		ID        int
+		UserName  string
+		Email     string
+		Password  string
+		FirsName  string
+		LastName  string
+		BirthDate string
+		IsActive  bool
+	)
+
+rows, errQ:= db.Query("SELECT * FROM users WHERE ID = ?", 2)
+if errQ != nil {
+	log.Fatal(errQ)
+}
+defer rows.Close()
+for rows.Next(){
+	err = rows.Scan(&ID, &UserName, &Email, &Password, &FirsName, &LastName, &BirthDate, &IsActive)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("bulunan satır içeriği: %q ", strconv.Itoa(ID)+" "+UserName+" "+Email+" "+Password+" "+FirsName+" "+LastName+" "+BirthDate+" "+strconv.FormatBool(IsActive))
+
+}
+errQ=rows.Err()
+if errQ !=nil{
+	log.Fatal(errQ)
+}
+
+	
+	
 }
