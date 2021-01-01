@@ -1,3 +1,5 @@
+//sql ile database'deki kayıtları getirme
+
 package main
 
 import (
@@ -28,12 +30,12 @@ func main() {
 		IsActive  bool
 	)
 
-rows, errQ:= db.Query("SELECT * FROM users WHERE ID = ?",0)
+rows, errQ:= db.Query("SELECT * FROM users WHERE ID = ?",3)
 if errQ != nil {
 	log.Fatal(errQ)
 }
 defer rows.Close()
-for row.Next(){
+for rows.Next(){
 	err = rows.Scan(&ID, &UserName, &Email, &Password, &FirsName, &LastName, &BirthDate, &IsActive)
 	if err != nil {
 		log.Fatal(err)
@@ -42,7 +44,7 @@ for row.Next(){
 
 }
 errQ=rows.Err()
-if errQ !=nill{
+if errQ !=nil{
 	log.Fatal(errQ)
 }
 
