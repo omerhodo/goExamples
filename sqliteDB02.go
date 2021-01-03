@@ -30,7 +30,7 @@ func main() {
 		IsActive  bool
 	)
 
-rows, errQ:= db.Query("SELECT * FROM users WHERE ID = ?",3)
+rows, errQ:= db.Query("SELECT * FROM users WHERE ID = ?",6)
 if errQ != nil {
 	log.Fatal(errQ)
 }
