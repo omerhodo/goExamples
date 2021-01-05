@@ -1,8 +1,5 @@
 # goExamples
-golang ile çalışırken oluşan dosyalar
+Udemy'de https://www.udemy.com/course/go-programlama-dili/learn/ kursunda anlatılan eğitim sürecinde çalıştığım dosyalar.
 
-
-#dosya Uzantıları hakkında
-dosyalar ile çalışırken hepsi aynı klasörde olduğu için ve her klasörde main package'i bulunduğunda  problem olacağından uzantıları kasıtlı olarak değiştirdim. Çalışlmak istenilen dosya uzantısı ".go" yapılarak kullanılabilir.
 
 
